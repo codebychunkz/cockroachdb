@@ -16,7 +16,6 @@ var initialize bool
 var db_url string
 
 func init() {
-	//var ip = flag.Int("flagname", 1234, "help message for flagname")
 	flag.BoolVar(&initialize, "init", false, "Set to true for database initialization")
 	flag.StringVar(&db_url, "db_url", "", "postgres connection url, ie [postgres://root@<url>:<port>/MovieDB?sslmode=disable]")
 	flag.Parse()
