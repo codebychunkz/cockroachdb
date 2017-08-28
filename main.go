@@ -41,22 +41,22 @@ func main() {
 		setup(repository)
 	}
 
-	for i := 1; i <= num_workers; i++ {
+	for index := 1; index <= num_workers; index++ {
 
-		time.Sleep(time.Second / num_workers)
+		time.Sleep(time.Second)
 
-		go func(respository MovieRepository) {
+		go func(respository MovieRepository, index int) {
 			for {
-				time.Sleep(time.Millisecond * 1000)
+				time.Sleep(time.Second * num_workers)
 				movies, err := respository.All()
 
 				if err != nil {
-					log.Printf("Error: %s", err)
+					log.Printf("[Goroutine %d] Error: %s", index, err)
 				} else {
-					log.Printf("Successfully fetched %d results", len(movies))
+					log.Printf("[Goroutine %d] Successfully fetched %d results", index, len(movies))
 				}
 			}
-		}(repository)
+		}(repository, index)
 
 	}
 
