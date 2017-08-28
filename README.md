@@ -12,7 +12,9 @@ Testing cockroachdb along with a simple docker client.
 
 ## Run
 Build and run with the parameters:
--db_url=<postgres-connection-url>
+
+-db_url=postgres-connection-url
+
 -init to initialize the database with some values
 
 Stop and start three nodes one at a time. HAProxy will detect and stop the traffic to the downed node until its started again. And the inserted values will be distributed along the three nodes.
